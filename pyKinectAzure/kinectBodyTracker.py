@@ -17,14 +17,14 @@ class kinectBodyTracker:
 		self.k4abt = _k4abt.k4abt()
 
 		try:
-			cdll.LoadLibrary("C:/Program Files/Azure Kinect Body Tracking SDK/tools/directml.dll")
+			cdll.LoadLibrary("C:/Program Files/Azure Kinect SDK v1.4.1/tools/directml.dll")
 		except Exception as e:
 			_k4abt.K4ABT_TRACKER_CONFIG_DEFAULT.processing_mode  = _k4abt.K4ABT_TRACKER_PROCESSING_MODE_GPU_CUDA
 
 		self.tracker_handle = _k4abt.k4abt_tracker_t()	
 		if modelType == 1:
 			try: 
-				_k4abt.K4ABT_TRACKER_CONFIG_DEFAULT.model_path = "C:/Program Files/Azure Kinect Body Tracking SDK/sdk/windows-desktop/amd64/release/bin/dnn_model_2_0_lite_op11.onnx".encode('utf-8')
+				_k4abt.K4ABT_TRACKER_CONFIG_DEFAULT.model_path = "C:/Program Files/Azure Kinect SDK v1.4.1/sdk/windows-desktop/amd64/release/bin/dnn_model_2_0_lite_op11.onnx".encode('utf-8')
 			except Exception as e:
 				print("Failed to find lite model. Check that you are using Body Tracker version 1.1.0\n")
 				print("Switching to the original body tracking model\n\n\n")
